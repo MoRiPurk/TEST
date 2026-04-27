@@ -1,8 +1,3 @@
-// ─────────────────────────────────────────────
-//  components/Header.js
-//  Renders the "RECOMMENDED / Recipes" heading
-// ─────────────────────────────────────────────
-
 export class Header {
   /**
    * @param {HTMLElement} container  – where to mount

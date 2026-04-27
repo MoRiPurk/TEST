@@ -226,9 +226,7 @@ body::after {
   border-color: var(--gold);
 }
 
-/* ════════════════════════════════════════════
-   COMPONENT: Carousel
-════════════════════════════════════════════ */
+/* COMPONENT: Carousel */
 .carousel-mount {
   opacity: 0;
   animation: fadeUp .7s ease forwards .35s;
@@ -325,9 +323,7 @@ body::after {
   transform: scale(1.35);
 }
 
-/* ════════════════════════════════════════════
-   COMPONENT: Modal
-════════════════════════════════════════════ */
+/* COMPONENT: Modal */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -460,7 +456,7 @@ body::after {
   line-height: 1.75;
 }
 
-/* ── Keyframe Animations ─────────────────── */
+/* Keyframe Animations */
 @keyframes fadeDown {
   to { opacity: 1; transform: translateY(0); }
 }

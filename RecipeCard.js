@@ -1,15 +1,9 @@
-// ─────────────────────────────────────────────
-//  components/RecipeCard.js
-//  Single recipe card — image, badge, meta,
-//  difficulty dots, and "View Recipe" CTA.
-// ─────────────────────────────────────────────
-
 const DIFFICULTY_LABELS = ['Easy', 'Medium', 'Hard'];
 
 export class RecipeCard {
   /**
-   * @param {Object}   recipe          – recipe data object
-   * @param {Function} onViewRecipe    – callback(recipe) when CTA clicked
+   * @param {Object}   recipe
+   * @param {Function} onViewRecipe
    */
   constructor(recipe, onViewRecipe) {
     this.recipe = recipe;
@@ -78,7 +72,7 @@ export class RecipeCard {
   }
 }
 
-// ── Inline SVG helpers ───────────────────────
+// Inline SVG helpers 
 function IconClock() {
   return `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
 }

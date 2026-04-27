@@ -1,9 +1,3 @@
-// ─────────────────────────────────────────────
-//  components/Carousel.js
-//  Responsive, draggable/swipeable card slider
-//  with prev/next arrows and dot indicators.
-// ─────────────────────────────────────────────
-
 import { RecipeCard } from './RecipeCard.js';
 
 export class Carousel {
@@ -27,7 +21,7 @@ export class Carousel {
     this._update();
   }
 
-  // ── Build DOM skeleton ───────────────────────
+  // Build DOM skeleton
   _build() {
     const wrapper = document.createElement('div');
     wrapper.className = 'carousel';
@@ -44,7 +38,7 @@ export class Carousel {
     this.nextBtn.setAttribute('aria-label', 'Next');
     this.nextBtn.innerHTML = ArrowRight();
 
-    // Track outer (clips overflow)
+    // Track outer
     const outer = document.createElement('div');
     outer.className = 'carousel__outer';
 
@@ -92,7 +86,7 @@ export class Carousel {
     }
   }
 
-  // ── Events ───────────────────────────────────
+  // Events
   _bindEvents() {
     this.prevBtn.addEventListener('click', () => this._step(-1));
     this.nextBtn.addEventListener('click', () => this._step(1));
@@ -128,7 +122,7 @@ export class Carousel {
     this._resizeObserver.observe(this.container);
   }
 
-  // ── Drag helpers ─────────────────────────────
+  // Drag helpers
   _dragStart(x) {
     this.isDragging = true;
     this.startX = x;
@@ -157,7 +151,7 @@ export class Carousel {
     this.dragDelta = 0;
   }
 
-  // ── Navigation ───────────────────────────────
+  // Navigation
   _step(dir) {
     this.currentIndex += dir * this._perView();
     this._clamp();
@@ -185,7 +179,7 @@ export class Carousel {
     this._syncNavButtons();
   }
 
-  // ── Sync UI state ────────────────────────────
+  // Sync UI state
   _syncDots() {
     const slideIndex = Math.floor(this.currentIndex / this._perView());
     this.dotsEl.querySelectorAll('.carousel__dot').forEach((dot, i) => {
@@ -199,7 +193,7 @@ export class Carousel {
     this.nextBtn.disabled = this.currentIndex >= this.recipes.length - this._perView();
   }
 
-  // ── Helpers ──────────────────────────────────
+  // Helpers
   _perView() {
     const w = this.container.offsetWidth;
     if (w <= 560) return 1;
@@ -209,7 +203,7 @@ export class Carousel {
 
   _itemWidth() {
     const item = this.track.querySelector('.carousel__item');
-    return item ? item.offsetWidth + 20 : 0; // 20 = gap
+    return item ? item.offsetWidth + 20 : 0;
   }
 
   destroy() {
@@ -217,7 +211,7 @@ export class Carousel {
   }
 }
 
-// ── SVG arrow helpers ────────────────────────
+// SVG arrow helpers
 function ArrowLeft() {
   return `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>`;
 }

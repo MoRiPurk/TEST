@@ -1,9 +1,3 @@
-// ─────────────────────────────────────────────
-//  components/Modal.js
-//  Accessible recipe-detail overlay.
-//  Opens/closes with animation; traps focus.
-// ─────────────────────────────────────────────
-
 const DIFFICULTY_LABELS = ['Easy', 'Medium', 'Hard'];
 
 export class Modal {
@@ -12,7 +6,7 @@ export class Modal {
     this._bindEvents();
   }
 
-  // ── Build DOM ────────────────────────────────
+  // Build DOM 
   _build() {
     this.overlay = document.createElement('div');
     this.overlay.className = 'modal-overlay';
@@ -53,7 +47,7 @@ export class Modal {
     document.body.appendChild(this.overlay);
   }
 
-  // ── Events ───────────────────────────────────
+  // Events
   _bindEvents() {
     // Close button
     this.overlay.querySelector('.modal__close').addEventListener('click', () => this.close());
@@ -68,9 +62,8 @@ export class Modal {
     document.addEventListener('keydown', this._onKeyDown);
   }
 
-  // ── Public API ───────────────────────────────
+  // Public API 
   /**
-   * Open the modal and populate with recipe data.
    * @param {Object} recipe
    */
   open(recipe) {
