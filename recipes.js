@@ -41,13 +41,13 @@ export const recipes = [
   },
   {
     id: 3,
-    title: 'Corn Spicy Salad',
+    title: 'Salad',
     category: 'Salad',
     badge: 'Trending',
     time: '30 mins',
     servings: 2,
     difficulty: 2,
-    img: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80',
+    img: 'https://images.unsplash.com/photo-1607532941433-304659e8198a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsYWR8ZW58MHx8MHx8fDA%3D',
     ingredients: [
       '2 ears sweet corn',
       '1 red chilli, sliced',
@@ -62,13 +62,13 @@ export const recipes = [
   },
   {
     id: 4,
-    title: 'Tom Yum Soup',
+    title: 'Tom Yum',
     category: 'Soup',
     badge: 'Hot',
     time: '35 mins',
     servings: 3,
     difficulty: 3,
-    img: 'https://images.unsplash.com/photo-1607330289024-1535c6b4e1c1?w=600&q=80',
+    img: 'https://plus.unsplash.com/premium_photo-1669150849085-a81cdcc8fcab?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8dG9tJTIweXVtfGVufDB8fDB8fHww',
     ingredients: [
       '500ml chicken stock',
       '200g shrimp',
