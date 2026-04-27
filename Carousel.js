@@ -14,11 +14,17 @@ export class Carousel {
     this.currentIndex = 0;
     this.isDragging = false;
     this.startX = 0;
+    this.startY = 0;
     this.dragDelta = 0;
+    this.isMobile = this._detectMobile();
 
     this._build();
     this._bindEvents();
     this._update();
+  }
+
+  _detectMobile() {
+    return this.container.offsetWidth <= 560;
   }
 
   // Build DOM skeleton
