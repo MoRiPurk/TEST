@@ -105,7 +105,7 @@ export const recipes = [
   },
   {
     id: 6,
-    title: 'Green Papaya Salad',
+    title: 'Papaya Salad',
     category: 'Salad',
     badge: 'Fresh',
     time: '15 mins',
