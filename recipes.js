@@ -111,7 +111,7 @@ export const recipes = [
     time: '15 mins',
     servings: 2,
     difficulty: 1,
-    img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80',
+    img: 'https://images.unsplash.com/photo-1648421331147-9fcfab29536e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGFwYXlhJTIwc2FsYWR8ZW58MHx8MHx8fDA%3D',
     ingredients: [
       '1 green papaya, shredded',
       '2 cloves garlic',
