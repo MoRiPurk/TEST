@@ -1,0 +1,474 @@
+:root {
+  --cream:        #fdf6ee;
+  --warm-sand:    #f0e4d0;
+  --rust:         #c0392b;
+  --rust-light:   #e8564a;
+  --gold:         #d4a843;
+  --dark:         #1a1208;
+  --muted:        #7a6a55;
+  --card-bg:      #ffffff;
+  --radius:       18px;
+  --shadow:       0 8px 32px rgba(26,18,8,.10);
+  --shadow-hover: 0 20px 48px rgba(26,18,8,.18);
+  --gap:          20px;
+  --transition:   .3s ease;
+}
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; }
+ul { list-style: none; }
+
+/* Body / Page */
+body {
+  background: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Subtle radial-gradient orbs as background texture */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+body::before {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(212,168,67,.18) 0%, transparent 70%);
+  top: -180px; right: -180px;
+}
+body::after {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(192,57,43,.10) 0%, transparent 70%);
+  bottom: -100px; left: -100px;
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+/* COMPONENT: Header */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 48px;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeDown .7s ease forwards .1s;
+}
+
+.section-header__eyebrow {
+  font-size: clamp(.85rem, 1.5vw, 1rem);
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--rust);
+}
+
+.section-header__title {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--dark);
+  line-height: 1;
+}
+
+/* COMPONENT: RecipeCard */
+.recipe-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+  will-change: transform;
+}
+
+.recipe-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Image area */
+.recipe-card__img-wrap {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background: var(--warm-sand);
+}
+
+.recipe-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+.recipe-card:hover .recipe-card__img {
+  transform: scale(1.07);
+}
+
+.recipe-card__badge {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: var(--rust);
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 50px;
+}
+
+.recipe-card__time-chip {
+  position: absolute;
+  bottom: 10px; right: 12px;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(6px);
+  border-radius: 50px;
+  padding: 3px 10px;
+  font-size: .78rem;
+  font-weight: 500;
+  color: var(--rust);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Card body */
+.recipe-card__body {
+  padding: 18px 20px 22px;
+  background: linear-gradient(135deg, #fff 70%, var(--warm-sand) 100%);
+}
+
+.recipe-card__category {
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.recipe-card__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+.recipe-card__meta {
+  display: flex;
+  gap: 14px;
+  font-size: .78rem;
+  color: var(--muted);
+}
+
+.recipe-card__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.recipe-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(212,168,67,.22);
+}
+
+.recipe-card__btn {
+  font-size: .8rem;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  background: var(--rust);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 20px;
+  transition: background .2s, transform .2s;
+}
+.recipe-card__btn:hover {
+  background: var(--rust-light);
+  transform: scale(1.04);
+}
+
+/* Difficulty dots */
+.recipe-card__difficulty {
+  display: flex;
+  gap: 4px;
+}
+
+.recipe-card__dot {
+  display: block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--warm-sand);
+  border: 1.5px solid rgba(212,168,67,.4);
+}
+.recipe-card__dot--active {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+/* ════════════════════════════════════════════
+   COMPONENT: Carousel
+════════════════════════════════════════════ */
+.carousel-mount {
+  opacity: 0;
+  animation: fadeUp .7s ease forwards .35s;
+}
+
+.carousel {
+  position: relative;
+}
+
+/* Overflow clip */
+.carousel__outer {
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+/* Sliding track */
+.carousel__track {
+  display: flex;
+  gap: var(--gap);
+  transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+  will-change: transform;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.carousel__track--grabbing {
+  cursor: grabbing;
+  transition: none;
+}
+
+/* Each slide item */
+.carousel__item {
+  flex: 0 0 calc((100% - var(--gap) * 2) / 3);
+}
+@media (max-width: 900px) {
+  .carousel__item { flex: 0 0 calc((100% - var(--gap)) / 2); }
+}
+@media (max-width: 560px) {
+  .carousel__item { flex: 0 0 100%; }
+}
+
+/* Arrow nav buttons */
+.carousel__nav {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  z-index: 10;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(26,18,8,.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+  transition: background .2s, color .2s, transform .2s;
+}
+.carousel__nav:hover {
+  background: var(--rust);
+  color: #fff;
+  transform: translateY(-50%) scale(1.08);
+}
+.carousel__nav:disabled {
+  opacity: .35;
+  pointer-events: none;
+}
+.carousel__nav--prev { left: -22px; }
+.carousel__nav--next { right: -22px; }
+
+@media (max-width: 640px) {
+  .carousel__nav--prev { left: 6px; }
+  .carousel__nav--next { right: 6px; }
+}
+
+/* Dot indicators */
+.carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.carousel__dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  background: var(--warm-sand);
+  padding: 0;
+  transition: background .2s, transform .2s;
+}
+.carousel__dot--active {
+  background: var(--rust);
+  border-color: var(--rust);
+  transform: scale(1.35);
+}
+
+/* ════════════════════════════════════════════
+   COMPONENT: Modal
+════════════════════════════════════════════ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26,18,8,.55);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay--open {
+  display: flex;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 24px;
+  max-width: 540px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  animation: popIn .35s cubic-bezier(.25,.46,.45,.94);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal__close {
+  position: sticky;
+  top: 14px;
+  float: right;
+  margin: 14px 14px 0 0;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,.9);
+  box-shadow: 0 2px 8px rgba(0,0,0,.12);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background .2s, color .2s;
+}
+.modal__close:hover {
+  background: var(--rust);
+  color: #fff;
+}
+
+.modal__img-wrap {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  margin-top: -48px; /* pulled under the sticky close btn */
+}
+.modal__img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.modal__img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26,18,8,.35) 0%, transparent 60%);
+}
+.modal__badge {
+  position: absolute;
+  bottom: 14px; right: 14px;
+  background: var(--rust);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 50px;
+}
+
+.modal__body {
+  padding: 24px 28px 32px;
+}
+
+.modal__category {
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.modal__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 4vw, 1.75rem);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.modal__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: .82rem;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+.modal__section { margin-bottom: 20px; }
+
+.modal__section-title {
+  font-size: .8rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 10px;
+}
+
+.modal__ingredients {
+  list-style: disc;
+  padding-left: 18px;
+  line-height: 2;
+  font-size: .9rem;
+  color: #444;
+}
+
+.modal__instructions {
+  font-size: .9rem;
+  color: #444;
+  line-height: 1.75;
+}
+
+/* ── Keyframe Animations ─────────────────── */
+@keyframes fadeDown {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
